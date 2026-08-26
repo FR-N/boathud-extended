@@ -16,8 +16,8 @@ val modName: String = sc.properties["mod.name"]
 val mcCompat: String = sc.properties["mod.mc_compat"]
 val mixinPackage: String = (property("mod.group") as String) + ".mixin"
 val mixinJava: String = "JAVA_" + requiredJava.majorVersion
-// ExperienceBarMixin 仅存在于 1.21.8+（经验条 1.21.8 起迁出 Gui 类）
-val extraMixins: String = if (sc.current.parsed >= "1.21.8") ",\"ExperienceBarMixin\"" else ""
+// ExperienceBarMixin 仅存在于 1.21.8~1.21.11（经验条 1.21.8 起迁出 Gui 类；26.x 为 contextual bar 另行处理）
+val extraMixins: String = if (sc.current.parsed >= "1.21.8" && sc.current.parsed < "26.1") ",\"ExperienceBarMixin\"" else ""
 val fabricApi: String = sc.properties["deps.fabric_api"]
 val modmenu: String = sc.properties["deps.modmenu"]
 val clothConfig: String = sc.properties["deps.cloth"]
