@@ -2,7 +2,14 @@ plugins {
     id("dev.kikugie.loom-back-compat")
 }
 
-version = "${property("mod.version")}-mc${sc.current.version}"
+// CI builds triggered by a v* tag derive the mod version from the tag itself,
+// so the release jars always match the release version without touching
+// stonecutter.properties.toml. Local builds fall back to mod.version.
+val ciReleaseTag: String? = System.getenv("GITHUB_REF")
+    ?.takeIf { it.startsWith("refs/tags/v") }
+    ?.substringAfterLast("/")
+
+version = if (ciReleaseTag != null) "${ciReleaseTag}-mc${sc.current.version}" else "${property("mod.version")}-mc${sc.current.version}"
 base.archivesName = property("mod.id") as String
 group = property("mod.group") as String
 
