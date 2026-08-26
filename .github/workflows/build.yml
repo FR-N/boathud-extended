@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches: [main]
+    tags: ["v*"]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -41,3 +42,39 @@ jobs:
             versions/*/build/libs/*.jar
             !versions/*/build/libs/*-sources.jar
           if-no-files-found: error
+
+  # Creates a GitHub Release with all mod jars attached when a v* tag is pushed.
+  # Uses the built-in GITHUB_TOKEN - no secrets to configure.
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup JDK 21 + 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: |
+            21
+            25
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build all Minecraft versions
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build --stacktrace
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            versions/*/build/libs/*.jar
+            !versions/*/build/libs/*-sources.jar
