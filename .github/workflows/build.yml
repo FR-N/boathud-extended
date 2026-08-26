@@ -71,6 +71,9 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build --stacktrace
 
+      - name: Remove sources jars from release
+        run: rm -f versions/*/build/libs/*-sources.jar
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
