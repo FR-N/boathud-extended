@@ -37,7 +37,7 @@ jobs:
       - name: Upload mod jars
         uses: actions/upload-artifact@v6
         with:
-          name: boathud-extended-jars
+          name: boathud-extended-jars-${{ github.ref_name }}
           path: |
             versions/*/build/libs/*.jar
             !versions/*/build/libs/*-sources.jar
