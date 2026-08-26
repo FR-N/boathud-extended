@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+
+    "name": "${name}",
+    "description": "This mod adds a racing style HUD, configurable, for riding a boat, and is designed mostly for racing boats on ice.",
+    "authors": [
+        "jewtvet",
+        "FR-N"
+    ],
+    "contact": {
+        "issues": "https://github.com/FR-N/boathud-extended/issues"
+    },
+
+    "license": "MIT",
+    "icon": "assets/boathud_extended/icon.png",
+
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "frn.boathud_extended.Common"
+        ],
+        "modmenu": [
+            "frn.boathud_extended.MenuInteg"
+        ]
+    },
+    "mixins": [
+        "boathud_extended.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.15.3",
+        "fabric-api": "*",
+        "minecraft": "${minecraft}",
+        "java": ">=21",
+        "cloth-config2": ">=11.0"
+    },
+    "suggests": {
+        "modmenu": ">=7.2.2"
+    }
+}
