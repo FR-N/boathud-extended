@@ -19,22 +19,9 @@ A racing-style HUD for ice boat racing on Fabric — speed bar with live slip an
 - **Config screen** via ModMenu + Cloth Config, or edit `config/boathud.properties` directly
 - Hides the vanilla hotbar/status bars/experience bar while driving
 
-## Supported versions
-
-| Minecraft | Java | Mod file |
-|---|---|---|
-| 1.21.1 | 21 | `boathud_extended-1.2.0-mc1.21.1.jar` |
-| 1.21.4 | 21 | `boathud_extended-1.2.0-mc1.21.4.jar` |
-| 1.21.8 | 21 | `boathud_extended-1.2.0-mc1.21.8.jar` |
-| 1.21.11 | 21 | `boathud_extended-1.2.0-mc1.21.11.jar` |
-| 26.1 / 26.1.1 / 26.1.2 | 25 | `boathud_extended-1.2.0-mc26.1.jar` |
-| 26.2 | 25 | `boathud_extended-1.2.0-mc26.2.jar` |
-
 ## Dependencies
 
 [Fabric API](https://modrinth.com/mod/fabric-api) is required. [Cloth Config](https://modrinth.com/mod/cloth-config) is required for the config screen, [Mod Menu](https://modrinth.com/mod/modmenu) is optional.
-
-Exact versions per Minecraft release are listed in [README_zh-CN.md](README_zh-CN.md) (中文对照表).
 
 ## Installation
 
